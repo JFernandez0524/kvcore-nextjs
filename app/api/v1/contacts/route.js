@@ -1,12 +1,15 @@
-import { RESPONSE_LIMIT_DEFAULT } from 'next/dist/server/api-utils';
-const url = 'http://api.kvcore.com/v2/public/contacts';
-
 export async function GET(request) {
-  const res = await fetch(url, {
+  const url = 'https://api.kvcore.com/v2/public/contacts/';
+  const options = {
+    method: 'GET',
     headers: {
-      Authorization: `Bearer ${process.env.SERVER_KEY}`,
+      accept: 'application/json',
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${process.env.SERVER_KEY}`,
     },
-  });
+  };
+
+  const res = await fetch(url, options);
   const contacts = await res.json();
   return Response.json(contacts);
 }

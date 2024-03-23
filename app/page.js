@@ -8,6 +8,7 @@ export default function Home() {
   const fetchData = async () => {
     const res = await fetch('/api/v1/contacts');
     const contacts = await res.json();
+    console.log(contacts);
     setContacts(contacts);
   };
   useEffect(() => {
