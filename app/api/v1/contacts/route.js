@@ -5,11 +5,11 @@ export async function GET(request) {
     headers: {
       accept: 'application/json',
       'Content-Type': 'application/json',
-      authorization: `Bearer ${process.env.SERVER_KEY}`,
+      Authorization: `Bearer ${process.env.SERVER_KEY}`,
     },
   };
 
   const res = await fetch(url, options);
   const contacts = await res.json();
-  return Response.json(contacts);
+  return Response.json(contacts.data);
 }

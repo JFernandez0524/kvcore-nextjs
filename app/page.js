@@ -1,30 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import ContactsList from './components/ContactsList';
 
 export default function Home() {
-  const [contacts, setContacts] = useState([]);
-  const fetchData = async () => {
-    const res = await fetch('/api/v1/contacts');
-    const contacts = await res.json();
-    console.log(contacts);
-    setContacts(contacts);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const logContacts = async () => {
-    console.log(contacts);
-  };
-
   return (
     <main>
-      <h1>HEllo FRom Jose</h1>
-
-      <button onClick={logContacts}>log Contacts</button>
-      {contacts && 'Contacts Are Here!'}
+      <h1 className='text-3xl font-bold underline'>KVCore Contacts</h1>
+      <ContactsList />
     </main>
   );
 }
